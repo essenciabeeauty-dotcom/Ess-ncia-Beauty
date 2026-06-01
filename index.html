@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Essência Beauty | Unhas, Cílios & Sobrancelha</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* === RESET & BASE === */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --primary:#2d5a3d;--primary-deep:#1e3f2b;--secondary:#3a7d53;
+  --accent:#c9a96e;--accent-light:#dfc28e;--bg:#f9f7f4;--bg-warm:#f3efe8;
+  --text:#2c2c2c;--text-light:#6b6b6b;--white:#ffffff;
+  --font-display:'Playfair Display',Georgia,serif;
+  --font-body:'Poppins',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);color:var(--text);background:var(--bg);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+
+/* === REVEAL ANIMATIONS === */
+@keyframes fadeSlideUp{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeSlideLeft{from{opacity:0;transform:translateX(40px)}to{opacity:1;transform:translateX(0)}}
+@keyframes scaleIn{from{opacity:0;transform:scale(.88)}to{opacity:1;transform:scale(1)}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+@keyframes shimmer{0%{background-position:-200% 0}100%{background-position:200% 0}}
+@keyframes pulseGlow{0%,100%{box-shadow:0 0 0 0 rgba(37,211,102,.45)}70%{box-shadow:0 0 0 18px rgba(37,211,102,0)}}
+@keyframes gentleSpin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+@keyframes waveDrift{0%{transform:translateX(0) scaleY(1)}50%{transform:translateX(-25px) scaleY(1.05)}100%{transform:translateX(0) scaleY(1)}}
+
+.reveal{opacity:0;transform:translateY(40px);transition:opacity .8s cubic-bezier(.22,1,.36,1),transform .8s cubic-bezier(.22,1,.36,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-delay-1{transition-delay:.15s}
+.reveal-delay-2{transition-delay:.3s}
+.reveal-delay-3{transition-delay:.45s}
+
+/* === HERO === */
+.hero{
+  position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(165deg,var(--primary-deep) 0%,var(--primary) 35%,var(--secondary) 70%,#4a9066 100%);
+  overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 80% 60% at 20% 80%,rgba(201,169,110,.12) 0%,transparent 70%),
+             radial-gradient(ellipse 60% 50% at 80% 20%,rgba(255,255,255,.06) 0%,transparent 60%);
+  z-index:1;
+}
+
+/* Decorative wave shapes */
+.hero-wave{position:absolute;width:140%;left:-20%;z-index:0;opacity:.12}
+.hero-wave--top{top:-5%;animation:waveDrift 12s ease-in-out infinite}
+.hero-wave--mid{top:25%;opacity:.08;animation:waveDrift 18s ease-in-out infinite reverse}
+.hero-wave--bottom{bottom:-10%;opacity:.15;animation:waveDrift 15s ease-in-out infinite}
+
+/* Decorative circles */
+.hero-orb{position:absolute;border-radius:50%;border:1px solid rgba(255,255,255,.08);z-index:0}
+.hero-orb--1{width:400px;height:400px;top:-100px;right:-80px;border-width:2px;animation:gentleSpin 60s linear infinite}
+.hero-orb--2{width:250px;height:250px;bottom:10%;left:-60px;animation:gentleSpin 45s linear infinite reverse}
+.hero-orb--3{width:150px;height:150px;top:20%;left:15%;border-color:rgba(201,169,110,.15);animation:gentleSpin 35s linear infinite}
+
+/* Gold accent line */
+.hero-line{
+  position:absolute;width:1px;height:180px;
+  background:linear-gradient(to bottom,transparent,var(--accent),transparent);
+  z-index:1;opacity:.4;
+}
+.hero-line--left{left:12%;top:15%;transform:rotate(-15deg)}
+.hero-line--right{right:10%;bottom:20%;transform:rotate(20deg);height:140px}
+
+.hero-content{
+  position:relative;z-index:2;text-align:center;padding:2rem 1.5rem;
+  animation:fadeSlideUp 1s cubic-bezier(.22,1,.36,1) .2s both;
+}
+.hero-logo{
+  width:260px;height:auto;margin:0 auto 1.5rem;
+  border-radius:16px;overflow:hidden;
+  box-shadow:0 8px 40px rgba(0,0,0,.25),0 0 0 3px rgba(201,169,110,.3);
+  background:var(--white);padding:1rem 1.5rem;
+  animation:scaleIn 1s cubic-bezier(.22,1,.36,1) .3s both;
+}
+.hero-logo img{width:100%;height:auto;object-fit:contain}
+.hero-title{
+  font-family:var(--font-display);font-size:clamp(2.2rem,5vw,3.8rem);
+  font-weight:500;color:var(--white);letter-spacing:.03em;
+  line-height:1.15;margin-bottom:.6rem;
+  animation:fadeSlideUp 1s cubic-bezier(.22,1,.36,1) .5s both;
+}
+.hero-title em{font-style:italic;color:var(--accent-light)}
+.hero-tagline{
+  font-family:var(--font-body);font-size:clamp(.8rem,1.8vw,1rem);
+  font-weight:400;color:rgba(255,255,255,.75);letter-spacing:.35em;
+  text-transform:uppercase;
+  animation:fadeSlideUp 1s cubic-bezier(.22,1,.36,1) .7s both;
+}
+.hero-divider{
+  width:60px;height:2px;margin:1.8rem auto;
+  background:linear-gradient(90deg,transparent,var(--accent),transparent);
+  animation:fadeSlideUp 1s cubic-bezier(.22,1,.36,1) .8s both;
+}
+.hero-scroll{
+  position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);
+  z-index:2;animation:float 2.5s ease-in-out infinite;
+}
+.hero-scroll svg{width:28px;height:28px;stroke:rgba(255,255,255,.45);stroke-width:1.5;fill:none}
+
+/* === SECTION SHARED === */
+section{padding:5rem 1.5rem}
+.section-label{
+  font-family:var(--font-body);font-size:.7rem;font-weight:600;
+  letter-spacing:.3em;text-transform:uppercase;color:var(--accent);
+  margin-bottom:.6rem;
+}
+.section-title{
+  font-family:var(--font-display);font-size:clamp(1.8rem,4vw,2.8rem);
+  font-weight:500;color:var(--primary);line-height:1.2;margin-bottom:1rem;
+}
+.section-desc{
+  font-size:.95rem;color:var(--text-light);line-height:1.7;max-width:520px;
+}
+
+/* === SERVICES === */
+.services{background:var(--bg);position:relative}
+.services-header{text-align:center;margin-bottom:3.5rem}
+.services-header .section-desc{margin:0 auto}
+
+.services-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:2rem;max-width:960px;margin:0 auto;
+}
+.service-card{
+  position:relative;background:var(--white);border-radius:20px;
+  padding:2.8rem 2rem 2.2rem;text-align:center;
+  box-shadow:0 4px 24px rgba(0,0,0,.04);
+  border:1px solid rgba(45,90,61,.06);
+  transition:transform .45s cubic-bezier(.22,1,.36,1),box-shadow .45s ease;
+}
+.service-card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 12px 40px rgba(45,90,61,.1);
+}
+.service-card::before{
+  content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);
+  width:50px;height:3px;border-radius:0 0 3px 3px;
+  background:linear-gradient(90deg,var(--accent),var(--secondary));
+  transition:width .4s ease;
+}
+.service-card:hover::before{width:80px}
+
+.service-icon{
+  width:72px;height:72px;margin:0 auto 1.5rem;
+  border-radius:50%;display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(135deg,rgba(45,90,61,.06),rgba(201,169,110,.1));
+  transition:background .4s ease;
+}
+.service-card:hover .service-icon{
+  background:linear-gradient(135deg,rgba(45,90,61,.12),rgba(201,169,110,.18));
+}
+.service-icon svg{width:32px;height:32px;stroke:var(--primary);stroke-width:1.5;fill:none}
+
+.service-card h3{
+  font-family:var(--font-display);font-size:1.35rem;font-weight:500;
+  color:var(--primary);margin-bottom:.7rem;
+}
+.service-card p{
+  font-size:.88rem;color:var(--text-light);line-height:1.65;
+}
+
+/* === CTA SECTION === */
+.cta-section{
+  background:linear-gradient(170deg,var(--primary-deep),var(--primary) 50%,var(--secondary));
+  position:relative;overflow:hidden;text-align:center;padding:5rem 1.5rem;
+}
+.cta-section::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(circle at 30% 70%,rgba(201,169,110,.1),transparent 50%),
+             radial-gradient(circle at 80% 20%,rgba(255,255,255,.04),transparent 40%);
+}
+.cta-inner{position:relative;z-index:1;max-width:560px;margin:0 auto}
+.cta-section .section-label{color:var(--accent-light)}
+.cta-section .section-title{color:var(--white)}
+.cta-section .section-desc{color:rgba(255,255,255,.7);margin:0 auto 2.5rem}
+
+.cta-form{
+  background:rgba(255,255,255,.1);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  border-radius:20px;padding:2.2rem 2rem;text-align:left;
+  border:1px solid rgba(255,255,255,.12);
+}
+.cta-form .form-group{margin-bottom:1.2rem}
+.cta-form .form-group label{color:rgba(255,255,255,.85)}
+.cta-form .form-group input,.cta-form .form-group select{
+  background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);
+  color:var(--white);
+}
+.cta-form .form-group input::placeholder{color:rgba(255,255,255,.4)}
+.cta-form .form-group input:focus,.cta-form .form-group select:focus{
+  border-color:var(--accent);box-shadow:0 0 0 3px rgba(201,169,110,.15);
+}
+.cta-form .form-group select option{color:var(--text);background:var(--white)}
+
+.btn-whatsapp{
+  display:inline-flex;align-items:center;gap:.75rem;
+  padding:1rem 2.5rem;border-radius:60px;
+  background:#25D366;color:var(--white);
+  font-family:var(--font-body);font-size:1.05rem;font-weight:500;
+  letter-spacing:.02em;border:none;cursor:pointer;
+  box-shadow:0 6px 28px rgba(37,211,102,.35);
+  transition:transform .3s ease,box-shadow .3s ease,background .3s ease;
+}
+.btn-whatsapp:hover{
+  transform:translateY(-3px) scale(1.03);
+  box-shadow:0 10px 36px rgba(37,211,102,.45);
+  background:#20bd5a;
+}
+.btn-whatsapp svg{width:24px;height:24px;fill:currentColor;flex-shrink:0}
+
+/* === FOOTER === */
+.footer{
+  background:var(--primary-deep);padding:2.5rem 1.5rem;text-align:center;
+  border-top:1px solid rgba(201,169,110,.15);
+}
+.footer-brand{
+  font-family:var(--font-display);font-size:1.15rem;font-weight:500;
+  color:var(--white);margin-bottom:.4rem;
+}
+.footer-social{display:flex;justify-content:center;gap:1rem;margin:1.2rem 0}
+.footer-social a{
+  width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.6);
+  transition:all .3s ease;
+}
+.footer-social a:hover{
+  border-color:var(--accent);color:var(--accent);
+  transform:translateY(-2px);
+}
+.footer-social a svg{width:18px;height:18px;fill:currentColor}
+.footer-address{
+  display:flex;align-items:center;justify-content:center;gap:.5rem;
+  font-size:.82rem;color:rgba(255,255,255,.55);margin-bottom:.3rem;
+  line-height:1.5;
+}
+.footer-address svg{width:15px;height:15px;fill:rgba(255,255,255,.45);flex-shrink:0}
+.footer-address a{color:rgba(255,255,255,.55);transition:color .3s ease}
+.footer-address a:hover{color:var(--accent)}
+.footer-copy{font-size:.75rem;color:rgba(255,255,255,.4);letter-spacing:.05em}
+.footer-line{
+  width:40px;height:1px;margin:1rem auto;
+  background:linear-gradient(90deg,transparent,var(--accent),transparent);
+}
+
+/* === FLOATING WHATSAPP === */
+.whatsapp-float{
+  position:fixed;bottom:1.8rem;right:1.8rem;z-index:1000;
+  width:60px;height:60px;border-radius:50%;
+  background:#25D366;display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 20px rgba(37,211,102,.4);
+  animation:pulseGlow 2s ease-in-out infinite;
+  transition:transform .3s ease;
+  cursor:pointer;
+}
+.whatsapp-float:hover{transform:scale(1.1)}
+.whatsapp-float svg{width:30px;height:30px;fill:var(--white)}
+
+/* Tooltip */
+.whatsapp-float::before{
+  content:'Agendar horário';position:absolute;right:72px;top:50%;
+  transform:translateY(-50%);padding:.5rem 1rem;border-radius:8px;
+  background:var(--text);color:var(--white);font-size:.78rem;
+  font-family:var(--font-body);white-space:nowrap;
+  opacity:0;pointer-events:none;transition:opacity .3s ease;
+}
+.whatsapp-float:hover::before{opacity:1}
+
+/* Float modal */
+.float-modal-overlay{
+  position:fixed;inset:0;z-index:1500;background:rgba(0,0,0,.5);
+  display:none;align-items:flex-end;justify-content:flex-end;
+  padding:1.5rem;opacity:0;transition:opacity .3s ease;
+}
+.float-modal-overlay.open{display:flex;opacity:1}
+.float-modal{
+  width:340px;max-width:calc(100vw - 3rem);background:var(--white);
+  border-radius:20px;box-shadow:0 12px 48px rgba(0,0,0,.18);
+  padding:2rem 1.5rem;margin-bottom:70px;
+  animation:fadeSlideUp .35s cubic-bezier(.22,1,.36,1) both;
+}
+.float-modal-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.2rem}
+.float-modal-header h4{font-family:var(--font-display);font-size:1.15rem;color:var(--primary)}
+.float-modal-close{
+  width:32px;height:32px;border-radius:50%;border:none;background:rgba(45,90,61,.08);
+  color:var(--primary);font-size:1.1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;
+  transition:background .3s ease;
+}
+.float-modal-close:hover{background:rgba(45,90,61,.15)}
+.float-modal .form-group{margin-bottom:1rem}
+.float-modal .form-group label{
+  display:block;font-size:.78rem;font-weight:500;color:var(--primary);margin-bottom:.35rem;
+}
+.float-modal .form-group input,.float-modal .form-group select{
+  width:100%;padding:.75rem .9rem;border-radius:10px;
+  border:1px solid rgba(45,90,61,.15);background:var(--bg);
+  font-family:var(--font-body);font-size:.85rem;color:var(--text);
+  outline:none;transition:border-color .3s ease,box-shadow .3s ease;
+}
+.float-modal .form-group input:focus,.float-modal .form-group select:focus{
+  border-color:var(--secondary);box-shadow:0 0 0 3px rgba(58,125,83,.1);
+}
+.float-modal .form-group input::placeholder{color:#aaa}
+.float-modal .btn-whatsapp{width:100%;justify-content:center;padding:.85rem;font-size:.92rem}
+
+/* === ABOUT === */
+.about{background:var(--bg-warm);position:relative;overflow:hidden}
+.about-inner{max-width:900px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
+.about-image{border-radius:16px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,.08);aspect-ratio:3/4;position:relative}
+.about-image img,.about-image video{width:100%;height:100%;object-fit:cover}
+.about-text .section-title{margin-bottom:1.2rem}
+.about-text p{font-size:.88rem;color:var(--text-light);line-height:1.75;margin-bottom:1rem}
+
+.about-team{display:flex;flex-direction:column;gap:.7rem;margin-top:1.5rem}
+.about-team-member{
+  display:flex;align-items:center;gap:.75rem;
+  padding:.6rem 1rem;border-radius:12px;
+  background:rgba(45,90,61,.04);border:1px solid rgba(45,90,61,.08);
+  transition:all .3s ease;
+}
+.about-team-member:hover{background:rgba(45,90,61,.08);border-color:rgba(45,90,61,.15);transform:translateX(4px)}
+.about-team-member span{font-size:.88rem;font-weight:500;color:var(--primary);flex:1}
+.about-team-member .team-ig{
+  display:flex;align-items:center;gap:.4rem;
+  font-size:.78rem;font-weight:400;color:var(--text-light);
+  transition:color .3s ease;
+}
+.about-team-member:hover .team-ig{color:var(--primary)}
+.about-team-member .team-ig svg{width:16px;height:16px;fill:currentColor}
+
+/* === RULES === */
+.rules{background:var(--primary-deep);position:relative;overflow:hidden}
+.rules::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(circle at 70% 30%,rgba(58,125,83,.15),transparent 50%);
+}
+.rules-inner{max-width:720px;margin:0 auto;position:relative;z-index:1}
+.rules .section-label{color:var(--accent-light)}
+.rules .section-title{color:var(--white);margin-bottom:2rem}
+.rules-list{list-style:none;display:flex;flex-direction:column;gap:1rem}
+.rules-list li{
+  display:flex;align-items:flex-start;gap:.85rem;
+  font-size:.88rem;color:rgba(255,255,255,.7);line-height:1.65;
+}
+.rules-list li::before{
+  content:'';flex-shrink:0;width:8px;height:8px;margin-top:7px;
+  border-radius:50%;background:var(--accent);
+}
+
+/* === CONTACT INFO === */
+.contact-info{background:var(--bg)}
+.contact-inner{max-width:800px;margin:0 auto}
+.contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:2rem;margin-top:2.5rem}
+.contact-item{text-align:center;padding:2rem 1.5rem;background:var(--white);border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,.04);border:1px solid rgba(45,90,61,.06)}
+.contact-item-icon{
+  width:48px;height:48px;margin:0 auto 1rem;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(135deg,rgba(45,90,61,.08),rgba(201,169,110,.1));
+}
+.contact-item-icon svg{width:22px;height:22px;stroke:var(--primary);stroke-width:1.5;fill:none}
+.contact-item h4{font-family:var(--font-display);font-size:1.1rem;font-weight:500;color:var(--primary);margin-bottom:.5rem}
+.contact-item p{font-size:.82rem;color:var(--text-light);line-height:1.6}
+
+/* === GALLERY === */
+.gallery{background:var(--bg-warm);position:relative;overflow:hidden}
+.gallery-header{text-align:center;margin-bottom:2.5rem}
+.gallery-header .section-desc{margin:0 auto}
+
+.gallery-tabs{display:flex;justify-content:center;gap:.6rem;flex-wrap:wrap;margin-bottom:2.5rem}
+.gallery-tab{
+  padding:.55rem 1.4rem;border-radius:30px;border:1px solid rgba(45,90,61,.2);
+  background:transparent;color:var(--primary);font-family:var(--font-body);
+  font-size:.82rem;font-weight:500;cursor:pointer;transition:all .3s ease;
+}
+.gallery-tab.active,.gallery-tab:hover{background:var(--primary);color:var(--white);border-color:var(--primary)}
+
+.gallery-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+  gap:1.2rem;max-width:1100px;margin:0 auto;
+}
+.gallery-item{
+  position:relative;border-radius:14px;overflow:hidden;cursor:pointer;
+  aspect-ratio:7/10;box-shadow:0 4px 16px rgba(0,0,0,.06);
+  transition:transform .4s cubic-bezier(.22,1,.36,1),box-shadow .4s ease;
+}
+.gallery-item:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,.12)}
+.gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.gallery-item:hover img{transform:scale(1.04)}
+.gallery-item .gallery-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(30,63,43,.85) 0%,transparent 55%);
+  display:flex;flex-direction:column;justify-content:flex-end;padding:1.2rem;
+  opacity:0;transition:opacity .35s ease;
+}
+.gallery-item:hover .gallery-overlay{opacity:1}
+.gallery-overlay h4{font-family:var(--font-display);font-size:1.15rem;color:var(--white);margin-bottom:.3rem}
+.gallery-overlay p{font-size:.78rem;color:rgba(255,255,255,.75);line-height:1.5}
+.gallery-item[style*="display: none"]{display:none !important}
+
+/* Lightbox */
+.lightbox{
+  position:fixed;inset:0;z-index:2000;background:rgba(0,0,0,.88);
+  display:none;align-items:center;justify-content:center;
+  opacity:0;transition:opacity .3s ease;
+}
+.lightbox.open{display:flex;opacity:1}
+.lightbox img{max-width:90vw;max-height:85vh;border-radius:12px;object-fit:contain;box-shadow:0 8px 40px rgba(0,0,0,.4)}
+.lightbox-close{
+  position:absolute;top:1.5rem;right:1.5rem;width:44px;height:44px;
+  border-radius:50%;border:none;background:rgba(255,255,255,.12);
+  color:var(--white);font-size:1.5rem;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;transition:background .3s ease;
+}
+.lightbox-close:hover{background:rgba(255,255,255,.25)}
+.lightbox-nav{
+  position:absolute;top:50%;transform:translateY(-50%);
+  width:48px;height:48px;border-radius:50%;border:none;
+  background:rgba(255,255,255,.12);color:var(--white);font-size:1.3rem;
+  cursor:pointer;display:flex;align-items:center;justify-content:center;
+  transition:background .3s ease;
+}
+.lightbox-nav:hover{background:rgba(255,255,255,.25)}
+.lightbox-prev{left:1.2rem}
+.lightbox-next{right:1.2rem}
+
+/* === COURSE FORM === */
+.course-section{background:var(--bg);position:relative}
+.course-inner{max-width:600px;margin:0 auto;text-align:center}
+.course-inner .section-desc{margin:0 auto 2rem}
+.course-form{
+  background:var(--white);border-radius:20px;padding:2.5rem 2rem;
+  box-shadow:0 4px 24px rgba(0,0,0,.04);border:1px solid rgba(45,90,61,.06);
+  text-align:left;
+}
+.form-group{margin-bottom:1.3rem}
+.form-group label{
+  display:block;font-size:.8rem;font-weight:500;color:var(--primary);
+  margin-bottom:.4rem;letter-spacing:.02em;
+}
+.form-group input,.form-group select{
+  width:100%;padding:.85rem 1rem;border-radius:10px;
+  border:1px solid rgba(45,90,61,.15);background:var(--bg);
+  font-family:var(--font-body);font-size:.9rem;color:var(--text);
+  transition:border-color .3s ease,box-shadow .3s ease;
+  outline:none;
+}
+.form-group input:focus,.form-group select:focus{
+  border-color:var(--secondary);box-shadow:0 0 0 3px rgba(58,125,83,.1);
+}
+.form-group input::placeholder{color:#aaa}
+.btn-course{
+  width:100%;padding:.95rem;border:none;border-radius:10px;
+  background:var(--primary);color:var(--white);
+  font-family:var(--font-body);font-size:.95rem;font-weight:500;
+  cursor:pointer;transition:background .3s ease,transform .2s ease;
+  margin-top:.5rem;
+}
+.btn-course:hover{background:var(--secondary);transform:translateY(-1px)}
+.form-success{
+  display:none;text-align:center;padding:2rem;
+}
+.form-success.show{display:block}
+.form-success svg{width:56px;height:56px;stroke:var(--secondary);stroke-width:1.5;fill:none;margin-bottom:1rem}
+.form-success h4{font-family:var(--font-display);font-size:1.3rem;color:var(--primary);margin-bottom:.5rem}
+.form-success p{font-size:.88rem;color:var(--text-light)}
+
+/* === RESPONSIVE === */
+@media(max-width:640px){
+  .hero-logo{width:200px;padding:.8rem 1.2rem}
+  section{padding:3.5rem 1.2rem}
+  .services-grid{grid-template-columns:1fr;gap:1.5rem}
+  .service-card{padding:2.2rem 1.5rem 1.8rem}
+  .btn-whatsapp{padding:.9rem 2rem;font-size:.95rem}
+  .whatsapp-float{width:54px;height:54px;bottom:1.2rem;right:1.2rem}
+  .whatsapp-float svg{width:26px;height:26px}
+  .whatsapp-float::before{display:none}
+  .hero-orb--1{width:250px;height:250px}
+  .hero-orb--2{width:150px;height:150px}
+  .hero-line{display:none}
+  .about-inner{grid-template-columns:1fr;gap:2rem}
+  .about-image{max-width:320px;margin:0 auto}
+  .contact-grid{grid-template-columns:1fr}
+  .gallery-grid{grid-template-columns:repeat(2,1fr);gap:1rem}
+  .course-form{padding:1.8rem 1.3rem}
+  .lightbox-nav{width:38px;height:38px;font-size:1rem}
+  .lightbox-prev{left:.5rem}
+  .lightbox-next{right:.5rem}
+}
+@media(min-width:641px) and (max-width:1024px){
+  .services-grid{grid-template-columns:repeat(3,1fr);gap:1.5rem}
+}
+</style>
+</head>
+<body>
+
+<!-- ========== HERO ========== -->
+<section class="hero">
+  <!-- Decorative elements -->
+  <svg class="hero-wave hero-wave--top" viewBox="0 0 1440 320" preserveAspectRatio="none"><path fill="rgba(255,255,255,.15)" d="M0,160L48,170.7C96,181,192,203,288,186.7C384,171,480,117,576,117.3C672,117,768,171,864,176C960,181,1056,139,1152,128C1248,117,1344,139,1392,149.3L1440,160L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"/></svg>
+  <svg class="hero-wave hero-wave--bottom" viewBox="0 0 1440 320" preserveAspectRatio="none"><path fill="rgba(255,255,255,.12)" d="M0,256L48,229.3C96,203,192,149,288,149.3C384,149,480,203,576,213.3C672,224,768,192,864,165.3C960,139,1056,117,1152,128C1248,139,1344,181,1392,202.7L1440,224L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"/></svg>
+
+  <div class="hero-orb hero-orb--1"></div>
+  <div class="hero-orb hero-orb--2"></div>
+  <div class="hero-orb hero-orb--3"></div>
+  <div class="hero-line hero-line--left"></div>
+  <div class="hero-line hero-line--right"></div>
+
+  <div class="hero-content">
+    <div class="hero-logo">
+      <img src="images/logo.png" alt="Essência Beauty Logo">
+    </div>
+    <h1 class="hero-title"><em>Essência</em> Beauty</h1>
+    <div class="hero-divider"></div>
+    <p class="hero-tagline">Unhas &nbsp;|&nbsp; Cílios &nbsp;|&nbsp; Sobrancelha</p>
+  </div>
+
+  <a href="#servicos" class="hero-scroll" aria-label="Rolar para baixo">
+    <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+  </a>
+</section>
+
+<!-- ========== SERVIÇOS ========== -->
+<section class="services" id="servicos">
+  <div class="services-header reveal">
+    <p class="section-label">Nossos Serviços</p>
+    <h2 class="section-title">Realce sua beleza natural</h2>
+    <p class="section-desc">Cada detalhe é pensado para valorizar o que você tem de mais bonito, com técnicas atualizadas e produtos de alta qualidade.</p>
+  </div>
+
+  <div class="services-grid">
+    <!-- Unhas -->
+    <div class="service-card reveal reveal-delay-1">
+      <div class="service-icon">
+        <svg viewBox="0 0 48 48"><path d="M16 6c-2 0-4 2-5 6-1 5 0 12 3 18 2 4 5 7 8 9 1 1 3 1 4 0 3-2 6-5 8-9 3-6 4-13 3-18-1-4-3-6-5-6s-4 1-5 4c-1-3-3-4-5-4h-1z" stroke-linejoin="round"/><path d="M22 14v8M26 12v10" stroke-linecap="round" opacity=".5"/></svg>
+      </div>
+      <h3>Unhas</h3>
+      <p>Alongamento de Unha, Banho de Gel, Blindagem e Esmaltação em Gel. Mãos impecáveis com acabamento perfeito.</p>
+    </div>
+
+    <!-- Cílios -->
+    <div class="service-card reveal reveal-delay-2">
+      <div class="service-icon">
+        <svg viewBox="0 0 48 48"><path d="M8 28c4-8 12-14 16-14s12 6 16 14" stroke-linejoin="round"/><path d="M14 26c-2-6-1-12 1-17M19 23c-1-7 0-14 3-19M24 22c0-8 1-14 3-19M29 23c1-7 2-14 5-19M34 26c2-6 3-12 5-17" stroke-linecap="round" opacity=".6"/><ellipse cx="24" cy="30" rx="10" ry="5" opacity=".15" fill="currentColor" stroke="none"/></svg>
+      </div>
+      <h3>Cílios</h3>
+      <p>Extensão de Cílios e Lash Lifting. Olhar marcante com naturalidade e conforto.</p>
+    </div>
+
+    <!-- Sobrancelha -->
+    <div class="service-card reveal reveal-delay-3">
+      <div class="service-icon">
+        <svg viewBox="0 0 48 48"><path d="M6 22c4-6 10-10 18-10 6 0 11 2 16 6" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 24c3-4 7-7 14-7 5 0 9 2 13 5" stroke-linecap="round" opacity=".4"/><circle cx="24" cy="32" r="2" fill="currentColor" stroke="none" opacity=".3"/></svg>
+      </div>
+      <h3>Sobrancelha</h3>
+      <p>Design de Sobrancelha e Brow Lamination. O enquadramento perfeito para o seu rosto.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== CTA WHATSAPP ========== -->
+<section class="cta-section" id="agendamento">
+  <div class="cta-inner reveal">
+    <p class="section-label">Agendamento</p>
+    <h2 class="section-title">Pronta para se cuidar?</h2>
+    <p class="section-desc">Preencha os dados abaixo e envie sua solicitação direto pelo WhatsApp.</p>
+    <div class="cta-form" id="agendForm">
+      <div class="form-group">
+        <label for="agendName">Nome completo</label>
+        <input type="text" id="agendName" placeholder="Digite seu nome completo" required>
+      </div>
+      <div class="form-group">
+        <label for="agendPhone">WhatsApp</label>
+        <input type="tel" id="agendPhone" placeholder="(41) 99999-9999" required>
+      </div>
+      <div class="form-group">
+        <label for="agendProf">Profissional</label>
+        <select id="agendProf">
+          <option value="">Selecione a profissional</option>
+          <option value="Lara Avelar">Lara Avelar</option>
+          <option value="Bruna Santos">Bruna Santos</option>
+          <option value="Eduarda Mayumi">Eduarda Mayumi</option>
+        </select>
+      </div>
+      <button class="btn-whatsapp" id="btnAgend" type="button" style="width:100%;justify-content:center">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Agendar pelo WhatsApp
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ========== GALERIA ========== -->
+<section class="gallery" id="galeria">
+  <div class="gallery-header reveal">
+    <p class="section-label">Nosso Portfólio</p>
+    <h2 class="section-title">Galeria de Procedimentos</h2>
+    <p class="section-desc">Confira os resultados dos nossos trabalhos e encontre a inspiração perfeita para você.</p>
+  </div>
+
+  <div class="gallery-tabs reveal">
+    <button class="gallery-tab active" data-filter="all">Todos</button>
+    <button class="gallery-tab" data-filter="cilios">Cílios</button>
+    <button class="gallery-tab" data-filter="sobrancelha">Sobrancelha</button>
+    <button class="gallery-tab" data-filter="unhas">Unhas</button>
+  </div>
+
+  <div class="gallery-grid">
+    <!-- Cílios -->
+    <div class="gallery-item reveal" data-cat="cilios">
+      <img src="images/procedimento-5.png" alt="Volume Russo" loading="lazy">
+      <div class="gallery-overlay"><h4>Volume Russo</h4><p>Aplicação: R$ 165 | Manut. 15d: R$ 90 | 16-20d: R$ 110</p></div>
+    </div>
+    <div class="gallery-item reveal" data-cat="cilios">
+      <img src="images/procedimento-6.png" alt="Volume Egípcio" loading="lazy">
+      <div class="gallery-overlay"><h4>Volume Egípcio</h4><p>Aplicação: R$ 160 | Manut. 15d: R$ 90 | 16-20d: R$ 110</p></div>
+    </div>
+    <div class="gallery-item reveal" data-cat="cilios">
+      <img src="images/procedimento-7.png" alt="Volume Wispy" loading="lazy">
+      <div class="gallery-overlay"><h4>Volume Wispy</h4><p>Aplicação: R$ 160 | Manut. 15d: R$ 90 | 16-20d: R$ 110</p></div>
+    </div>
+    <div class="gallery-item reveal" data-cat="cilios">
+      <img src="images/procedimento-8.png" alt="Volume Fio a Fio" loading="lazy">
+      <div class="gallery-overlay"><h4>Volume Fio a Fio</h4><p>Aplicação: R$ 150 | Manut. 15d: R$ 90 | 16-20d: R$ 110</p></div>
+    </div>
+    <div class="gallery-item reveal" data-cat="cilios">
+      <img src="images/procedimento-9.png" alt="Volume Brasileiro" loading="lazy">
+      <div class="gallery-overlay"><h4>Volume Brasileiro</h4><p>Aplicação: R$ 150 | Manut. 15d: R$ 90 | 16-20d: R$ 110</p></div>
+    </div>
+    <div class="gallery-item reveal" data-cat="cilios">
+      <img src="images/procedimento-10.png" alt="Volume Brasileiro Mellow" loading="lazy">
+      <div class="gallery-overlay"><h4>Volume Brasileiro Mellow</h4><p>Aplicação: R$ 150 | Manut. 15d: R$ 90 | 16-20d: R$ 110</p></div>
+    </div>
+    <div class="gallery-item reveal" data-cat="cilios">
+      <img src="images/procedimento-11.png" alt="Volume Fox Eyes" loading="lazy">
+      <div class="gallery-overlay"><h4>Volume Fox Eyes</h4><p>Aplicação: R$ 180 | Manut. 15d: R$ 90 | 16-20d: R$ 110</p></div>
+    </div>
+    <div class="gallery-item reveal" data-cat="cilios">
+      <img src="images/procedimento-12.png" alt="Volume Fox Eyes Mellow" loading="lazy">
+      <div class="gallery-overlay"><h4>Volume Fox Eyes Mellow</h4><p>Aplicação: R$ 180 | Manut. 15d: R$ 90 | 16-20d: R$ 110</p></div>
+    </div>
+    <div class="gallery-item reveal" data-cat="cilios">
+      <img src="images/procedimento-13.png" alt="Volume Girls Lash" loading="lazy">
+      <div class="gallery-overlay"><h4>Volume Girls Lash</h4><p>Aplicação: R$ 180 | Manut. 15d: R$ 90 | 16-20d: R$ 110</p></div>
+    </div>
+    <!-- Sobrancelha -->
+    <div class="gallery-item reveal" data-cat="sobrancelha">
+      <img src="images/procedimento-14.png" alt="Brow Lamination + Lash Lifting" loading="lazy">
+      <div class="gallery-overlay"><h4>Brow Lamination + Lash Lifting</h4><p>Brow Lamination: R$ 130 | Lash Lifting: R$ 130</p></div>
+    </div>
+    <div class="gallery-item reveal" data-cat="sobrancelha">
+      <img src="images/procedimento-15.png" alt="Design com Henna" loading="lazy">
+      <div class="gallery-overlay"><h4>Design com Henna</h4><p>Design c/ henna: R$ 50 | Design simples: R$ 40</p></div>
+    </div>
+    <div class="gallery-item reveal" data-cat="sobrancelha">
+      <img src="images/procedimento-16.png" alt="Design com Tintura" loading="lazy">
+      <div class="gallery-overlay"><h4>Design com Tintura</h4><p>Design com tintura: R$ 50</p></div>
+    </div>
+    <!-- Unhas -->
+    <div class="gallery-item reveal" data-cat="unhas">
+      <img src="images/procedimento-17.png" alt="Nail Design" loading="lazy">
+      <div class="gallery-overlay"><h4>Nail Design</h4><p>Arte personalizada para suas unhas</p></div>
+    </div>
+
+    <div class="gallery-item reveal" data-cat="unhas">
+      <img src="images/procedimento-19.png" alt="Soft Gel" loading="lazy">
+      <div class="gallery-overlay"><h4>Soft Gel</h4><p>Aplicação: R$ 135 | Manut. até 20d: R$ 100 | Após 20d: R$ 110</p></div>
+    </div>
+
+    <div class="gallery-item reveal" data-cat="unhas">
+      <img src="images/procedimento-21.png" alt="Banho de Gel" loading="lazy">
+      <div class="gallery-overlay"><h4>Banho de Gel</h4><p>Aplicação: R$ 115</p></div>
+    </div>
+    <div class="gallery-item reveal" data-cat="unhas">
+      <img src="images/procedimento-22.png" alt="Esmaltação em Gel" loading="lazy">
+      <div class="gallery-overlay"><h4>Esmaltação em Gel</h4><p>Aplicação: R$ 90</p></div>
+    </div>
+    <div class="gallery-item reveal" data-cat="unhas">
+      <img src="images/procedimento-23.png" alt="Blindagem em Gel" loading="lazy">
+      <div class="gallery-overlay"><h4>Blindagem em Gel</h4><p>Aplicação: R$ 105</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== LIGHTBOX ========== -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" aria-label="Fechar">&times;</button>
+  <button class="lightbox-nav lightbox-prev" aria-label="Anterior">&#8249;</button>
+  <img src="" alt="Procedimento">
+  <button class="lightbox-nav lightbox-next" aria-label="Próximo">&#8250;</button>
+</div>
+
+<!-- ========== CURSOS ========== -->
+<section class="course-section" id="cursos">
+  <div class="course-inner">
+    <div class="reveal">
+      <p class="section-label">Capacitação</p>
+      <h2 class="section-title">Interesse em Cursos</h2>
+      <p class="section-desc">Quer aprender as técnicas do Essência Beauty? Preencha o formulário abaixo e entraremos em contato com informações sobre nossos cursos.</p>
+    </div>
+    <div class="course-form reveal reveal-delay-1" id="courseForm">
+      <div class="form-group">
+        <label for="fullName">Nome completo</label>
+        <input type="text" id="fullName" placeholder="Digite seu nome completo" required>
+      </div>
+      <div class="form-group">
+        <label for="phone">Telefone (WhatsApp)</label>
+        <input type="tel" id="phone" placeholder="(41) 99999-9999" required>
+      </div>
+      <div class="form-group">
+        <label for="courseInterest">Área de interesse</label>
+        <select id="courseInterest">
+          <option value="">Selecione uma área</option>
+          <option value="cilios">Cílios</option>
+          <option value="sobrancelha">Sobrancelha</option>
+          <option value="unhas">Unhas</option>
+          <option value="todos">Todos</option>
+        </select>
+      </div>
+      <button class="btn-course" id="btnCourse" type="button">Enviar pelo WhatsApp</button>
+    </div>
+    <div class="form-success" id="formSuccess">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-5"/></svg>
+      <h4>Mensagem enviada!</h4>
+      <p>Redirecionando para o WhatsApp...</p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== SOBRE NÓS ========== -->
+<section class="about" id="sobre">
+  <div class="about-inner">
+    <div class="about-image reveal">
+      <video src="images/sobre.mp4" autoplay muted loop playsinline></video>
+    </div>
+    <div class="about-text reveal reveal-delay-1">
+      <p class="section-label">Sobre nós</p>
+      <h2 class="section-title">Como tudo começou</h2>
+      <p>Três amigas inseparáveis, unidas pela paixão por transformar e elevar a autoestima, decidiram dar vida ao seu sonho em comum: abrir um studio de beleza especializado em cílios, sobrancelhas e unhas.</p>
+      <p>Cada uma delas traz uma habilidade única, com talento em técnicas que realçam a beleza natural e a confiança de quem as procura. Juntas, elas fundaram o Essência Beauty, um espaço acolhedor onde o foco sempre foi proporcionar uma experiência que vai além da estética, mas também do bem-estar emocional de suas clientes.</p>
+      <p>A missão delas é simples: transformar cada cliente, não apenas externamente, mas também internamente, fazendo com que cada um saia se sentindo mais confiante e feliz consigo mesma.</p>
+      <div class="about-team">
+        <a href="https://www.instagram.com/lashlaraavelar?igsh=emtieGxjcDBkZ3Jz" target="_blank" rel="noopener" class="about-team-member">
+          <span>Lara Avelar</span>
+          <div class="team-ig"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>@lashlaraavelar</div>
+        </a>
+        <a href="https://www.instagram.com/ciliosbrunasantos?igsh=Y2tramtkMDc5OThz" target="_blank" rel="noopener" class="about-team-member">
+          <span>Bruna Santos</span>
+          <div class="team-ig"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>@ciliosbrunasantos</div>
+        </a>
+        <a href="https://www.instagram.com/nailsmayumi_?igsh=MW53OG5vNGQxODg1Yw==" target="_blank" rel="noopener" class="about-team-member">
+          <span>Eduarda Mayumi</span>
+          <div class="team-ig"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>@nailsmayumi_</div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== REGULAMENTO ========== -->
+<section class="rules" id="regulamento">
+  <div class="rules-inner">
+    <p class="section-label reveal">Nosso Regulamento</p>
+    <h2 class="section-title reveal">Informações importantes</h2>
+    <ul class="rules-list">
+      <li class="reveal">Agendamentos são realizados após pagamento de sinal.</li>
+      <li class="reveal reveal-delay-1">Desmarque ou reagendamento no dia do procedimento terá taxa de R$ 50,00 não reembolsável.</li>
+      <li class="reveal reveal-delay-1">Comparecer no horário marcado. Atraso de no máximo 5 minutos, após isso a cliente perde seu horário.</li>
+      <li class="reveal reveal-delay-2">Em casos de imprevistos, avisar com pelo menos 2 dias de antecedência ao seu horário marcado.</li>
+      <li class="reveal reveal-delay-2">Se apresentar sintomas de gripe ou covid, por gentileza desmarque.</li>
+      <li class="reveal reveal-delay-3">Após 20 dias da aplicação, será cobrado valor de colocação + remoção, pois o procedimento passa a ser considerado nova colocação.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ========== CONTATO ========== -->
+<section class="contact-info" id="contato">
+  <div class="contact-inner">
+    <div style="text-align:center" class="reveal">
+      <p class="section-label">Entre em contato</p>
+      <h2 class="section-title">Encontre-nos</h2>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-item reveal reveal-delay-1">
+        <div class="contact-item-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" fill="none"/><circle cx="12" cy="9" r="2.5" fill="none"/></svg>
+        </div>
+        <h4>Localização</h4>
+        <p>Rua Graciliano Ramos, 228<br>Maracanã, Colombo - PR</p>
+      </div>
+      <div class="contact-item reveal reveal-delay-2">
+        <div class="contact-item-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none"/><path d="M12 6v6l4 2" fill="none"/></svg>
+        </div>
+        <h4>Horário de Atendimento</h4>
+        <p>Segunda a Sexta: 10:00 - 19:00<br>Sábado: 09:00 - 13:00</p>
+      </div>
+      <div class="contact-item reveal reveal-delay-3">
+        <div class="contact-item-icon">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" fill="none"/></svg>
+        </div>
+        <h4>WhatsApp</h4>
+        <p>(41) 97402-1293</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== FOOTER ========== -->
+<footer class="footer">
+  <p class="footer-brand">Essência Beauty</p>
+  <div class="footer-social">
+    <a href="https://www.instagram.com/essenciabeeauty?igsh=OXBjbnZ6YWpscGIx" target="_blank" rel="noopener" aria-label="Instagram">
+      <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+    </a>
+    <a href="https://wa.me/5541974021293?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20um%20hor%C3%A1rio." target="_blank" rel="noopener" aria-label="WhatsApp">
+      <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
+  </div>
+  <p class="footer-address">
+    <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg>
+    <a href="https://www.google.com/maps/search/Rua+Graciliano+Ramos+228+Maracana+Colombo+Parana" target="_blank" rel="noopener">Rua Graciliano Ramos, 228 &mdash; Maracanã, Colombo, PR</a>
+  </p>
+  <div class="footer-line"></div>
+  <p class="footer-copy">&copy; 2026 Essência Beauty. Todos os direitos reservados.</p>
+</footer>
+
+<!-- ========== FLOATING WHATSAPP ========== -->
+<button class="whatsapp-float" id="floatBtn" aria-label="Agendar pelo WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</button>
+
+<!-- ========== FLOAT MODAL ========== -->
+<div class="float-modal-overlay" id="floatModal">
+  <div class="float-modal">
+    <div class="float-modal-header">
+      <h4>Agendar Horário</h4>
+      <button class="float-modal-close" id="floatModalClose">&times;</button>
+    </div>
+    <div class="form-group">
+      <label for="floatName">Nome completo</label>
+      <input type="text" id="floatName" placeholder="Digite seu nome completo">
+    </div>
+    <div class="form-group">
+      <label for="floatPhone">WhatsApp</label>
+      <input type="tel" id="floatPhone" placeholder="(41) 99999-9999">
+    </div>
+    <div class="form-group">
+      <label for="floatProf">Profissional</label>
+      <select id="floatProf">
+        <option value="">Selecione a profissional</option>
+        <option value="Lara Avelar">Lara Avelar</option>
+        <option value="Bruna Santos">Bruna Santos</option>
+        <option value="Eduarda Mayumi">Eduarda Mayumi</option>
+      </select>
+    </div>
+    <button class="btn-whatsapp" id="btnFloatAgend" type="button">
+      <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Enviar pelo WhatsApp
+    </button>
+  </div>
+</div>
+
+<!-- ========== SCROLL REVEAL JS ========== -->
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+  // Scroll reveal
+  const obs=new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}})
+  },{threshold:.15,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+  // Gallery filter tabs
+  const tabs=document.querySelectorAll('.gallery-tab');
+  const items=document.querySelectorAll('.gallery-item');
+  tabs.forEach(tab=>{
+    tab.addEventListener('click',()=>{
+      tabs.forEach(t=>t.classList.remove('active'));
+      tab.classList.add('active');
+      const f=tab.dataset.filter;
+      items.forEach(item=>{
+        if(f==='all'||item.dataset.cat===f){item.style.display='';}
+        else{item.style.display='none';}
+      });
+    });
+  });
+
+  // Lightbox
+  const lb=document.getElementById('lightbox');
+  const lbImg=lb.querySelector('img');
+  let visibleItems=()=>[...items].filter(i=>i.style.display!=='none');
+  let currentIdx=0;
+
+  items.forEach(item=>{
+    item.addEventListener('click',()=>{
+      const vis=visibleItems();
+      currentIdx=vis.indexOf(item);
+      lbImg.src=item.querySelector('img').src;
+      lbImg.alt=item.querySelector('img').alt;
+      lb.classList.add('open');
+      document.body.style.overflow='hidden';
+    });
+  });
+
+  lb.querySelector('.lightbox-close').addEventListener('click',closeLb);
+  lb.addEventListener('click',e=>{if(e.target===lb)closeLb()});
+
+  function closeLb(){lb.classList.remove('open');document.body.style.overflow=''}
+
+  lb.querySelector('.lightbox-prev').addEventListener('click',e=>{
+    e.stopPropagation();
+    const vis=visibleItems();
+    currentIdx=(currentIdx-1+vis.length)%vis.length;
+    lbImg.src=vis[currentIdx].querySelector('img').src;
+  });
+  lb.querySelector('.lightbox-next').addEventListener('click',e=>{
+    e.stopPropagation();
+    const vis=visibleItems();
+    currentIdx=(currentIdx+1)%vis.length;
+    lbImg.src=vis[currentIdx].querySelector('img').src;
+  });
+
+  document.addEventListener('keydown',e=>{
+    if(!lb.classList.contains('open'))return;
+    if(e.key==='Escape')closeLb();
+    if(e.key==='ArrowLeft')lb.querySelector('.lightbox-prev').click();
+    if(e.key==='ArrowRight')lb.querySelector('.lightbox-next').click();
+  });
+
+  // Phone mask
+  const phoneInputs=document.querySelectorAll('input[type="tel"]');
+  phoneInputs.forEach(inp=>{
+    inp.addEventListener('input',e=>{
+      let v=e.target.value.replace(/\D/g,'');
+      if(v.length>11)v=v.slice(0,11);
+      if(v.length>6)v=`(${v.slice(0,2)}) ${v.slice(2,7)}-${v.slice(7)}`;
+      else if(v.length>2)v=`(${v.slice(0,2)}) ${v.slice(2)}`;
+      else if(v.length>0)v=`(${v}`;
+      e.target.value=v;
+    });
+  });
+
+  // Agendamento form - send via WhatsApp
+  document.getElementById('btnAgend').addEventListener('click',()=>{
+    const name=document.getElementById('agendName').value.trim();
+    const phone=document.getElementById('agendPhone').value.trim();
+    const prof=document.getElementById('agendProf');
+    const profName=prof.options[prof.selectedIndex].text;
+
+    if(!name){alert('Por favor, preencha seu nome completo.');return}
+    if(phone.replace(/\D/g,'').length<10){alert('Por favor, preencha um telefone válido.');return}
+    if(!prof.value){alert('Por favor, selecione a profissional.');return}
+
+    const msg=encodeURIComponent(
+      `Olá! Gostaria de agendar um horário.\n\n`+
+      `Nome: ${name}\nWhatsApp: ${phone}\nProfissional: ${profName}`
+    );
+    window.open(`https://wa.me/5541974021293?text=${msg}`,'_blank');
+  });
+
+  // Course form - send via WhatsApp
+  document.getElementById('btnCourse').addEventListener('click',()=>{
+    const name=document.getElementById('fullName').value.trim();
+    const phone=document.getElementById('phone').value.trim();
+    const interest=document.getElementById('courseInterest');
+    const area=interest.options[interest.selectedIndex].text;
+
+    if(!name){alert('Por favor, preencha seu nome completo.');return}
+    if(phone.replace(/\D/g,'').length<10){alert('Por favor, preencha um telefone válido.');return}
+    if(!interest.value){alert('Por favor, selecione uma área de interesse.');return}
+
+    const msg=encodeURIComponent(
+      `Olá! Tenho interesse nos cursos do Essência Beauty.\n\n`+
+      `Nome: ${name}\nTelefone: ${phone}\nÁrea de interesse: ${area}`
+    );
+
+    document.getElementById('courseForm').style.display='none';
+    document.getElementById('formSuccess').classList.add('show');
+
+    setTimeout(()=>{
+      window.open(`https://wa.me/5541974021293?text=${msg}`,'_blank');
+    },800);
+  });
+  // Float modal
+  const floatBtn=document.getElementById('floatBtn');
+  const floatModal=document.getElementById('floatModal');
+  const floatClose=document.getElementById('floatModalClose');
+
+  floatBtn.addEventListener('click',()=>{floatModal.classList.add('open')});
+  floatClose.addEventListener('click',()=>{floatModal.classList.remove('open')});
+  floatModal.addEventListener('click',e=>{if(e.target===floatModal)floatModal.classList.remove('open')});
+
+  // Float form submit
+  document.getElementById('btnFloatAgend').addEventListener('click',()=>{
+    const name=document.getElementById('floatName').value.trim();
+    const phone=document.getElementById('floatPhone').value.trim();
+    const prof=document.getElementById('floatProf');
+    const profName=prof.options[prof.selectedIndex].text;
+
+    if(!name){alert('Por favor, preencha seu nome completo.');return}
+    if(phone.replace(/\D/g,'').length<10){alert('Por favor, preencha um telefone válido.');return}
+    if(!prof.value){alert('Por favor, selecione a profissional.');return}
+
+    const msg=encodeURIComponent(
+      `Olá! Gostaria de agendar um horário.\n\n`+
+      `Nome: ${name}\nWhatsApp: ${phone}\nProfissional: ${profName}`
+    );
+    window.open(`https://wa.me/5541974021293?text=${msg}`,'_blank');
+    floatModal.classList.remove('open');
+  });
+});
+</script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v833ccba57c9e4d2798f2e76cebdd09a11778172276447" integrity="sha512-57MDmcccJXYtNnH+ZiBwzC4jb2rvgVCEokYN+L/nLlmO8rfYT/gIpW2A569iJ/3b+0UEasghjuZH/ma3wIs/EQ==" data-cf-beacon='{"version":"2024.11.0","token":"75124c326cb447fe934cde04713ae013","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+</body>
+</html>
